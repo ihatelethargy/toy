@@ -32,6 +32,32 @@ function ContentsList() {
     })()
   }, [])
 
+  const onClickFunc = async evt => {
+    const body = {
+      title: 'New Contents',
+      description: '새로운 컨텐츠',
+      contentUrl:
+        'https://www.kindpng.com/picc/m/454-4542049_ink-question-mark-zen-ish-calligraphy-hd-png.png',
+      hashtag: 'UX',
+      icon: '',
+      comment: 'Leave a comment...',
+    }
+    try {
+      await api.createContent(body)
+      setContentsState({
+        status: 'resolved',
+        contents: [...contentsState.contents, body],
+      })
+    } catch (e) {}
+  }
+
+  const onDelete = id => {
+    setContentsState({
+      status: 'resolved',
+      contents: contentsState.contents.filter(item => item.id !== id),
+    })
+  }
+
   switch (contentsState.status) {
     case 'idle':
       return <>idle</>
@@ -46,9 +72,15 @@ function ContentsList() {
           <div className="contentsListWrapper">
             <div className="contentsCardWrapper">
               {contentsState.contents.map((item, index) => {
-                return <Card key={`Card + ${index}`} data={item} />
+                return (
+                  <Card
+                    key={`Card + ${index}`}
+                    data={item}
+                    onDelete={onDelete}
+                  />
+                )
               })}
-              <div className="create-card"></div>
+              <div className="create-card" onClick={onClickFunc}></div>
             </div>
           </div>
         </>
