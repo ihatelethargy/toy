@@ -5,7 +5,7 @@ import api from '../lib/api/api'
 import './ContentsList.scss'
 
 function ContentsList() {
-  const [contents, setContents] = useState({
+  const [contentsState, setContentsState] = useState({
     status: 'idle',
     contents: null,
   })
@@ -14,17 +14,17 @@ function ContentsList() {
     ;(async () => {
       try {
         const result = await api.getContentsAPI()
-        setContents({
+        setContentsState({
           status: 'pending',
           contents: null,
         })
 
-        setContents({
+        setContentsState({
           status: 'resolved',
           contents: result,
         })
       } catch (e) {
-        setContents({
+        setContentsState({
           status: 'rejected',
           contents: null,
         })
@@ -32,7 +32,7 @@ function ContentsList() {
     })()
   }, [])
 
-  switch (contents.status) {
+  switch (contentsState.status) {
     case 'idle':
       return <>idle</>
     case 'pending':
@@ -44,11 +44,13 @@ function ContentsList() {
       return (
         <>
           <div className="contentsListWrapper">
-            {contents.contents.map((item, index) => {
-              return <Card key={`Card + ${index}`} />
-            })}
+            <div className="contentsCardWrapper">
+              {contentsState.contents.map((item, index) => {
+                return <Card key={`Card + ${index}`} data={item} />
+              })}
+              <div className="create-card"></div>
+            </div>
           </div>
-          <div className="create-card"></div>
         </>
       )
   }
