@@ -1,0 +1,9 @@
+.itemWrapper {
+  width: 120px;
+  background-color: #03506f;
+  cursor: pointer;
+  &:hover {
+    background-color: aquamarine;
+    color: #03506f;
+  }
+}

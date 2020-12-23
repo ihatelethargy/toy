@@ -1,0 +1,14 @@
+.cardWrapper {
+  width: 300px;
+  display: grid;
+  justify-content: center;
+  gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100px;
+  grid-auto-rows: 100px;
+}
+
+.cardsWrapper {
+  display: flex;
+  justify-content: center;
+}

@@ -33,18 +33,15 @@ export default function App() {
       <form onSubmit={submitHandler} id="searchForm">
         <input
           type="text"
-          placeholder="시작시간을 입력하세요"
-          onChange={timeHandler}
-        />
-        <input
-          type="text"
           placeholder="유튜브영상 주소를 입력하세요"
           onChange={idHandler}
         />
+        <input
+          type="text"
+          placeholder="시작시간을 입력하세요"
+          onChange={timeHandler}
+        />
       </form>
-      <button type="submit" form="searchForm">
-        입력
-      </button>
 
       {isSumbit ? (
         <>
@@ -57,28 +54,33 @@ export default function App() {
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
           ></iframe>
-          <button
-            onClick={() => {
-              // setTime(24)
-              setPlay(true)
-              setTimeout(() => setPlay(false), 1500)
-            }}
-          >
-            1 초
-          </button>
-          <button
-            onClick={() => {
-              // setTime(24)
-              setPlay(true)
-              setTimeout(() => setPlay(false), 3000)
-            }}
-          >
-            3 초
-          </button>
+          <div className="buttonBox">
+            <button
+              onClick={() => {
+                // setTime(24)
+                setPlay(true)
+                setTimeout(() => setPlay(false), 3000)
+              }}
+            >
+              1 초
+            </button>
+            <button
+              onClick={() => {
+                // setTime(24)
+                setPlay(true)
+                setTimeout(() => setPlay(false), 4000)
+              }}
+            >
+              3 초
+            </button>
+          </div>
         </>
       ) : (
-        <>정보를 입력하세요</>
+        <div className="intro">유튜브 링크와 원하는 시작시간을 입력하세요</div>
       )}
+      <button type="submit" form="searchForm">
+        입력
+      </button>
     </div>
   )
 }
