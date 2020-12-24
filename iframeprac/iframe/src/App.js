@@ -7,9 +7,7 @@ export default function App() {
   const [id, setId] = useState(null)
   const [play, setPlay] = useState(false)
   const [isSumbit, SetIsSubmit] = useState(false)
-  // const url = play
-  //   ? `https://www.youtube.com/embed/uR8Mrt1IpXg?autoplay=1;start=${time}`
-  //   : `https://www.youtube.com/embed/uR8Mrt1IpXg`
+
   const url = play
     ? `https://www.youtube.com/embed/${id}?autoplay=1;start=${time}`
     : `https://www.youtube.com/embed/${id}`
@@ -59,7 +57,7 @@ export default function App() {
               onClick={() => {
                 // setTime(24)
                 setPlay(true)
-                setTimeout(() => setPlay(false), 3000)
+                setTimeout(() => setPlay(false), 2000)
               }}
             >
               1 초
@@ -68,7 +66,7 @@ export default function App() {
               onClick={() => {
                 // setTime(24)
                 setPlay(true)
-                setTimeout(() => setPlay(false), 4000)
+                setTimeout(() => setPlay(false), 3500)
               }}
             >
               3 초

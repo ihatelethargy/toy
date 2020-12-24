@@ -22,8 +22,18 @@ const getTestApi = async id => {
   }
 }
 
-export { getTestsApi, getTestApi }
+const createTest = async body => {
+  const { data } = await axios.post(`${url}`, body)
+  try {
+    console.log('[SUCCESS] create test')
+    return data
+  } catch (e) {
+    console.log('[FAIL] create test')
+  }
+}
 
-const api = { getTestsApi, getTestApi }
+export { getTestsApi, getTestApi, createTest }
+
+const api = { getTestsApi, getTestApi, createTest }
 
 export default api

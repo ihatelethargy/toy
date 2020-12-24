@@ -65,7 +65,7 @@ function ContentDetail({ match }) {
                     setTime(testData.test.start)
                     setId(testData.test.contentUrl.slice(-11))
                     setPlay(true)
-                    setTimeout(() => setPlay(false), 2000)
+                    setTimeout(() => setPlay(false), 2500)
                   }}
                 >
                   1 초
@@ -75,7 +75,7 @@ function ContentDetail({ match }) {
                     setTime(testData.test.start)
                     setId(testData.test.contentUrl.slice(-11))
                     setPlay(true)
-                    setTimeout(() => setPlay(false), 4000)
+                    setTimeout(() => setPlay(false), 4500)
                   }}
                 >
                   3 초

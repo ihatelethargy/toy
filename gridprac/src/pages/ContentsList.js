@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import Card from '../component/card/Card'
 import api from '../lib/api/api'
 import './ContentsList.scss'
 
 function ContentsList() {
+  const history = useHistory()
   const [contents, setContents] = useState({
     status: 'idle',
     tests: null,
@@ -44,6 +46,12 @@ function ContentsList() {
       return (
         <div className="cardsWrapper">
           <div className="cardWrapper">
+            <div
+              className="newCard"
+              onClick={() => history.push('/newcontent')}
+            >
+              +
+            </div>
             {contents.tests.map((item, index) => {
               return <Card key={`card-${index}`} data={item} />
             })}
