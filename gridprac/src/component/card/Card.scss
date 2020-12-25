@@ -1,9 +1,28 @@
 .itemWrapper {
   width: 120px;
   background-color: #03506f;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   cursor: pointer;
   &:hover {
     background-color: aquamarine;
     color: #03506f;
+  }
+}
+
+.closeIcon {
+  &:hover {
+    animation: spin 1s infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

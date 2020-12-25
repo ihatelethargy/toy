@@ -32,8 +32,18 @@ const createTest = async body => {
   }
 }
 
-export { getTestsApi, getTestApi, createTest }
+const deleteTest = async id => {
+  const { data } = await axios.delete(`${url}/${id}`)
+  try {
+    console.log('[SUCCESS] delete test')
+    return data
+  } catch (e) {
+    console.log('[FAIL] delete test')
+  }
+}
 
-const api = { getTestsApi, getTestApi, createTest }
+export { getTestsApi, getTestApi, createTest, deleteTest }
+
+const api = { getTestsApi, getTestApi, createTest, deleteTest }
 
 export default api

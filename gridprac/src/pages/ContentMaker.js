@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Header from '../component/header/Header'
 import api from '../lib/api/api'
 import './ContentMaker.scss'
 
@@ -63,29 +64,31 @@ function ContentMaker() {
   }
 
   return (
-    <div className="makerWrapper">
-      <form>
-        <input
-          type="text"
-          placeholder="제목을 입력하세요"
-          name="title"
-          onChange={changeHandler}
-        />
-        <input
-          type="text"
-          placeholder="유튜브 링크를입력하세요"
-          name="link"
-          onChange={changeHandler}
-        />
-        <input
-          type="text"
-          placeholder="시작시간을 입력하세요"
-          name="start"
-          onChange={changeHandler}
-        />
-      </form>
-      <button onClick={onClickFunc}>생성하기</button>
-    </div>
+    <>
+      <div className="makerWrapper">
+        <form>
+          <input
+            type="text"
+            placeholder="제목을 입력하세요"
+            name="title"
+            onChange={changeHandler}
+          />
+          <input
+            type="text"
+            placeholder="유튜브 링크를입력하세요"
+            name="link"
+            onChange={changeHandler}
+          />
+          <input
+            type="text"
+            placeholder="시작시간을 입력하세요"
+            name="start"
+            onChange={changeHandler}
+          />
+        </form>
+        <button onClick={onClickFunc}>생성하기</button>
+      </div>
+    </>
   )
 }
 

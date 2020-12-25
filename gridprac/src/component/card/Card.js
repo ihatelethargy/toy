@@ -1,9 +1,14 @@
+import CloseOutlined from '@ant-design/icons/CloseOutlined'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import './Card.scss'
 
-function Card({ data }) {
+function Card({ data, onDelete }) {
   const history = useHistory()
+  const onDeleteFunc = evt => {
+    evt.stopPropagation()
+    onDelete(data.id)
+  }
   return (
     <>
       <div
@@ -11,6 +16,9 @@ function Card({ data }) {
         onClick={() => history.push(`/contents/${data.id}`)}
       >
         <div className="cardTitle">{data.title}</div>
+        <div className="closeIcon" onClick={onDeleteFunc}>
+          <CloseOutlined />
+        </div>
       </div>
     </>
   )

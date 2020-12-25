@@ -34,6 +34,18 @@ function ContentsList() {
     })()
   }, [])
 
+  const onDelete = async id => {
+    try {
+      const result = await api.deleteTest(id)
+      setContents({
+        status: 'resolved',
+        tests: contents.tests.filter(item => {
+          return item.id !== id
+        }),
+      })
+    } catch (e) {}
+  }
+
   switch (contents.status) {
     case 'idle':
       return <>idle</>
@@ -53,7 +65,9 @@ function ContentsList() {
               +
             </div>
             {contents.tests.map((item, index) => {
-              return <Card key={`card-${index}`} data={item} />
+              return (
+                <Card key={`card-${index}`} data={item} onDelete={onDelete} />
+              )
             })}
           </div>
         </div>
